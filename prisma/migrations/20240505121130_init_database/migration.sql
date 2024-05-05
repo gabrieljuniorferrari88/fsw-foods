@@ -9,6 +9,7 @@ CREATE TABLE [dbo].[Restaurant] (
     [imageUrl] NVARCHAR(1000) NOT NULL,
     [deliveryFee] DECIMAL(10,2) NOT NULL,
     [deliveryTimeMinutes] INT NOT NULL,
+    [createdAt] DATETIME2 NOT NULL CONSTRAINT [Restaurant_createdAt_df] DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT [Restaurant_pkey] PRIMARY KEY CLUSTERED ([id])
 );
 
@@ -17,6 +18,7 @@ CREATE TABLE [dbo].[Category] (
     [id] INT NOT NULL IDENTITY(1,1),
     [name] NVARCHAR(1000) NOT NULL,
     [imageUrl] NVARCHAR(1000) NOT NULL,
+    [createdAt] DATETIME2 NOT NULL CONSTRAINT [Category_createdAt_df] DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT [Category_pkey] PRIMARY KEY CLUSTERED ([id])
 );
 
@@ -30,6 +32,7 @@ CREATE TABLE [dbo].[Product] (
     [discountPercentage] INT NOT NULL CONSTRAINT [Product_discountPercentage_df] DEFAULT 0,
     [restaurantId] INT NOT NULL,
     [categoryId] INT NOT NULL,
+    [createdAt] DATETIME2 NOT NULL CONSTRAINT [Product_createdAt_df] DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT [Product_pkey] PRIMARY KEY CLUSTERED ([id])
 );
 
